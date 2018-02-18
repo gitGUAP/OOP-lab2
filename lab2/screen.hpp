@@ -63,12 +63,12 @@ public:
 
 	void putPoint(const Point& p)
 	{
-		_screen[p.getX()][p.getY()] = Pixel::BLACK;
+		_screen[p.getY()][p.getX()] = Pixel::BLACK;
 	}
 
 	void putPoint(const std::uint32_t x, const std::uint32_t y)
 	{
-		_screen[x][y] = Pixel::BLACK;
+		_screen[y][x] = Pixel::BLACK;
 	}
 
 	void clear()

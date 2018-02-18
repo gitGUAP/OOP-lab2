@@ -1,6 +1,7 @@
 #include "screen.hpp" 
 #include "line.hpp" 
 #include "square.hpp" 
+#include "circle.hpp" 
 
 #include <vector> 
 #include <memory> 
@@ -32,14 +33,14 @@ int main()
 	eyeLeft.setX(eyeLeft.getX() + 2);
 	eyeLeft.setY(eyeLeft.getY() + 2);
 	Point eyeRight = Point(eyeLeft.getX() + 2, eyeLeft.getY());
-	shapes.emplace_back(std::make_shared<Line>(eyeLeft, eyeRight)); // Левый глаз 
+	shapes.emplace_back(std::make_shared<Line>(eyeLeft, eyeRight)); // Левый глаз
 
 	eyeRight = shapes[shapes.size() - 2]->getRightTop();
 	eyeRight.setX(eyeRight.getX() - 2);
 	eyeRight.setY(eyeRight.getY() + 2);
 	eyeLeft = Point(eyeRight.getX() - 2, eyeRight.getY());
 	shapes.emplace_back(std::make_shared<Line>(eyeLeft, eyeRight)); // Правый глаз 
-
+	
 	std::shared_ptr<Shape> leftEye = shapes[shapes.size() - 2];
 	std::shared_ptr<Shape> rightEye = shapes[shapes.size() - 1];
 	Point nose = Point(leftEye->getRightTop().getX() +
@@ -64,6 +65,13 @@ int main()
 	p1 = Point(costume->getRightBottom().getX(), costume->getRightBottom().getY() + 1);
 	auto rightDot = std::make_shared<Line>(p1, p1);
 	shapes.emplace_back(rightDot); //Правая точка 
+
+	// 10
+	shapes.emplace_back(std::make_shared<Circle>(17, 17, 5));
+	
+	// 11
+	shapes.emplace_back(std::make_shared<Circle>(17, 30, 5));
+
 
 	for (auto shape : shapes)
 		shape->draw(screen.get());
