@@ -72,6 +72,8 @@ int main()
 	// 11
 	shapes.emplace_back(std::make_shared<Circle>(17, 30, 5));
 
+	// 12
+	shapes.emplace_back(std::make_shared<Circle>(9, 24, 5));
 
 	for (auto shape : shapes)
 		shape->draw(screen.get());
