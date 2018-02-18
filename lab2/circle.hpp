@@ -39,34 +39,31 @@ public:
 
 	virtual void move(Point p)
 	{
+		_x.setX(_x.getX() + p.getX());
+		_y.setY(_x.getY() + p.getY());
 	}
 
 	Point getLeftTop() const
 	{
-		return Point(_x, _y);
+		return Point(_x - _r, _y - _r);
 	}
 
 	Point getRightTop() const
 	{
-		return Point(_x, _y);
-
+		return Point(_x + _r, _y - _r);
 	}
 
 	Point getLeftBottom() const
 	{
-		return Point(_x, _y);
-
+		return Point(_x - _r, _y + _r);
 	}
 
 	Point getRightBottom() const
 	{
-		return Point(_x, _y);
-
+		return Point(_x + _r, _y + _r);
 	}
 
-	virtual ~Circle()
-	{
-	}
+	virtual ~Circle() {}
 
 protected:
 	uint32_t _x, _y, _r;

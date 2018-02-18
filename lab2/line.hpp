@@ -24,8 +24,6 @@ public:
 	{
 		_a = source._a;
 		_b = source._b;
-		
-
 	}
 
 	void draw(Screen* screen) const
