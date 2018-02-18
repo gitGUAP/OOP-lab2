@@ -67,13 +67,13 @@ int main()
 	shapes.emplace_back(rightDot); //Правая точка 
 
 	// 10
-	shapes.emplace_back(std::make_shared<Circle>(17, 17, 5));
+	shapes.emplace_back(std::make_shared<Circle>(17, 17, 1));
 	
 	// 11
-	shapes.emplace_back(std::make_shared<Circle>(17, 30, 5));
+	shapes.emplace_back(std::make_shared<Circle>(17, 30, 1));
 
 	// 12
-	shapes.emplace_back(std::make_shared<Circle>(9, 24, 5));
+	shapes.emplace_back(std::make_shared<Circle>(7, 24, 2));
 
 	for (auto shape : shapes)
 		shape->draw(screen.get());

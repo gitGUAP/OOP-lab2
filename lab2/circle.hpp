@@ -9,51 +9,32 @@ public:
 
 	virtual void draw(Screen* screen) const
 	{
-		int x1, y1, yk = 0;
-		int sigma, delta, f;
+		int x = 0;
+		int y = _r;
+		int delta = 1 - 2 * _r;
+		int error = 0;
+		while (y >= 0) {
+			screen->putPoint(_x + x, _y + y);
+			screen->putPoint(_x + x, _y - y);
+			screen->putPoint(_x - x, _y + y);
+			screen->putPoint(_x - x, _y - y);
 
-		x1 = 0;
-		y1 = _r;
-		delta = 2 * (1 - _r);
-
-		do
-		{
-			screen->putPoint(_x + x1, _y + y1);
-			screen->putPoint(_x - x1, _y + y1);
-			screen->putPoint(_x + x1, _y - y1);
-			screen->putPoint(_x - x1, _y - y1);
-
-			f = 0;
-			if (y1 < yk)
-				break;
-			if (delta < 0)
-			{
-				sigma = 2 * (delta + y1) - 1;
-				if (sigma <= 0)
-				{
-					x1++;
-					delta += 2 * x1 + 1;
-					f = 1;
-				}
+			error = 2 * (delta + y) - 1;
+			if (delta < 0 && error <= 0) {
+				++x;
+				delta += 2 * x + 1;
+				continue;
 			}
-			else
-				if (delta > 0)
-				{
-					sigma = 2 * (delta - x1) - 1;
-					if (sigma > 0)
-					{
-						y1--;
-						delta += 1 - 2 * y1;
-						f = 1;
-					}
-				}
-			if (!f)
-			{
-				x1++;
-				y1--;
-				delta += 2 * (x1 - y1 - 1);
+			error = 2 * (delta - x) - 1;
+			if (delta > 0 && error > 0) {
+				--y;
+				delta += 1 - 2 * y;
+				continue;
 			}
-		} while (1);
+			++x;
+			delta += 2 * (x - y);
+			--y;
+		}
 	}
 
 	virtual void move(Point p)
