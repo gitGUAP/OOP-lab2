@@ -1,14 +1,12 @@
 #pragma once
 
-#include "shape.hpp" 
-#include "line.hpp" 
+#include "line.hpp"
+#include "shape.hpp"
 
-//Крест 
-class Cross : public virtual Shape
-{
+//Крест
+class Cross : public virtual Shape {
 public:
-	Cross(const Point& left, const Point& top)
-	{
+	Cross(const Point &left, const Point &top) {
 		Point p1, p2;
 		Point p3, p4;
 
@@ -21,45 +19,30 @@ public:
 		_second = new Line(p3, p4);
 	}
 
-	virtual void draw(Screen* screen) const
-	{
+	virtual void draw(Screen *screen) const {
 		_first->draw(screen);
 		_second->draw(screen);
-
 	}
 
-	virtual void move(Point p)
-	{
+	virtual void move(Point p) {
 		_first->move(p);
 		_second->move(p);
 	}
 
-	Point getLeftTop() const
-	{
-		return _first->getLeftTop();
-	}
+	Point getLeftTop() const { return _first->getLeftTop(); }
 
-	Point getRightTop() const
-	{
-		return _second->getRightTop();
-	}
+	Point getRightTop() const { return _second->getRightTop(); }
 
-	Point getLeftBottom() const
-	{
-		return _second->getLeftBottom();
-	}
+	Point getLeftBottom() const { return _second->getLeftBottom(); }
 
-	Point getRightBottom() const
-	{
-		return _first->getRightBottom();
-	}
+	Point getRightBottom() const { return _first->getRightBottom(); }
 
-	virtual ~Cross()
-	{
+	virtual ~Cross() {
 		delete _first;
 		delete _second;
 	}
+
 protected:
-	Line* _first;
-	Line* _second;
+	Line * _first;
+	Line *_second;
 };

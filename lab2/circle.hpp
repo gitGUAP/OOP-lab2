@@ -1,14 +1,12 @@
 #pragma once
 
-#include "shape.hpp" 
+#include "shape.hpp"
 
-class Circle : public virtual Shape
-{
+class Circle : public virtual Shape {
 public:
 	Circle(uint32_t x, uint32_t y, uint32_t radius) : _x(x), _y(y), _r(radius) {}
 
-	virtual void draw(Screen* screen) const
-	{
+	virtual void draw(Screen *screen) const {
 		int x = 0;
 		int y = _r;
 		int delta = 1 - 2 * _r;
@@ -37,31 +35,18 @@ public:
 		}
 	}
 
-	virtual void move(Point p)
-	{
+	virtual void move(Point p) {
 		_x = _x + p.getX();
 		_y = _y + p.getY();
 	}
 
-	Point getLeftTop() const
-	{
-		return Point(_x - _r, _y - _r);
-	}
+	Point getLeftTop() const { return Point(_x - _r, _y - _r); }
 
-	Point getRightTop() const
-	{
-		return Point(_x + _r, _y - _r);
-	}
+	Point getRightTop() const { return Point(_x + _r, _y - _r); }
 
-	Point getLeftBottom() const
-	{
-		return Point(_x - _r, _y + _r);
-	}
+	Point getLeftBottom() const { return Point(_x - _r, _y + _r); }
 
-	Point getRightBottom() const
-	{
-		return Point(_x + _r, _y + _r);
-	}
+	Point getRightBottom() const { return Point(_x + _r, _y + _r); }
 
 	virtual ~Circle() {}
 

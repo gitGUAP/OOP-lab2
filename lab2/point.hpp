@@ -1,11 +1,11 @@
 #pragma once
 
-#include <cstdint> 
+#include <cstdint>
 
-class Point //Точка на экране 
+class Point //Точка на экране
 {
 public:
-	Point() : _x(0), _y(0) { };
+	Point() : _x(0), _y(0) {};
 	Point(std::uint32_t x, std::uint32_t y) : _x(x), _y(y) {}
 
 	std::uint32_t getX() const { return _x; }

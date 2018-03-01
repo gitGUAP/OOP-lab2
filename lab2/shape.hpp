@@ -1,11 +1,10 @@
 #pragma once
 
-#include "screen.hpp" 
+#include "screen.hpp"
 
-class Shape
-{
+class Shape {
 public:
-	virtual void draw(Screen* screen) const = 0;
+	virtual void draw(Screen *screen) const = 0;
 
 	virtual void move(Point p) = 0;
 
