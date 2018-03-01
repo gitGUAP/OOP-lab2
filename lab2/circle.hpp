@@ -39,8 +39,8 @@ public:
 
 	virtual void move(Point p)
 	{
-		_x.setX(_x.getX() + p.getX());
-		_y.setY(_x.getY() + p.getY());
+		_x = _x + p.getX();
+		_y = _y + p.getY();
 	}
 
 	Point getLeftTop() const
